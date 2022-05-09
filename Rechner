@@ -1,0 +1,222 @@
+#Language - Python
+#The software were made by Chetvertak(May 2022)
+#The software is used to find out if the distance is safe, according to world standart(if voltage inside the pacemaker <= 2mV: it is safe)
+
+
+import tkinter as tk
+
+#list of info
+list500= [0,5,9,11,7,5,3]
+list380= [7,6,5,4,3,2.5,2]
+list220=[3.5, 3, 2.5, 2, 1.5, 1, 0.5]
+list110=[1.8, 1.4, 1, 0.75, 0.5, 0.375]
+
+normal1=2
+global uss
+
+# gui def
+def add_digit(digit):
+    value= calc.get()
+    if value[0]=='0' and len(value): #если значение числа в поле 0 и длина строки 1,то нолик заменяется при вводе числа
+        value = value[1:]
+    calc.delete(0,tk.END)
+    calc.insert(0,value+digit)
+
+def make_digit_button(digit):
+    return tk.Button(text=digit,bd=5,font=("Arial",13),command=lambda : add_digit(digit))
+
+
+def make_clear_button(operation):
+    return tk.Button(text=operation,bd=5,font=("Arial",13),fg='red',
+                     command=clear)
+
+def make_import_button():
+    return tk.Button(text="Berechnen",bd=2,bg="#ff5959",font=("Arial",13),command=lambda:importinfo(startchoice))
+
+def importinfo(gg):
+    volt=int(gg)
+    if volt ==500:
+        l500=calc.get()
+        length500=int(l500)
+        #math
+        if length500 == 0:
+            eaus=list500[0] 
+        elif length500 in range(0,6):
+            eaus=list500[1] 
+        elif length500 in range(5,11):
+            eaus=list500[2] 
+        elif length500 in range(10,16):
+            eaus=list500[3] 
+        elif length500 in range(15,21):
+            eaus=list500[4] 
+        elif length500 in range(20,26):
+            eaus=list500[5] 
+        elif length500 in range(25,31):
+            eaus=list500[6] 
+        else:
+            eaus=0 
+        tk.Label(text=f"Feldstärke - {eaus} KV/m",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=3,column=3,sticky='wens',pady=5)
+        uss=(0.42*eaus)
+        ussinteger=float(uss)
+        tk.Label(text=f"spannung - {ussinteger} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=3,sticky='wens',pady=5)
+        if ussinteger >=2:
+            safetylabel=tk.Label(win,text = "unsicher",font=("Lucida Handwriting Italic",8),bg="#ff1212",bd=7,relief=tk.SOLID,borderwidth=3)
+            safetylabel.grid(row=5,column=3,sticky='wens',pady=5)
+        elif ussinteger <2:
+            safetylabel=tk.Label(win,text = "sicher",font=("Lucida Handwriting Italic",8),bg="#51ff12",bd=7,relief=tk.SOLID,borderwidth=3)
+            safetylabel.grid(row=5,column=3,sticky='wens',pady=5)
+            
+    elif volt==380:
+            l380=calc.get()
+            length380=int(l380)
+            #math
+            if length380 == 0:
+                eaus=list380[0] 
+            elif length380 in range(0,6):
+                eaus=list380[1] 
+            elif length380 in range(5,11):
+                eaus=list380[2] 
+            elif length380 in range(10,16):
+                eaus=list380[3]        
+            elif length380 in range(15,21):
+                eaus=list380[4]      
+            elif length380 in range(20,26):
+                eaus=list380[5] 
+            elif length380 in range(25,31):
+                eaus=list380[6] 
+
+            else:
+                eaus=0
+            tk.Label(text=f"Feldstärke - {eaus} KV/m",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=3,column=3,sticky='wens',pady=5)
+            uss=(0.42*eaus)
+            ussinteger=float(uss)
+            tk.Label(text=f"spannung - {ussinteger} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=3,sticky='wens',pady=5)
+            if ussinteger >=2:
+                safetylabel=tk.Label(win,text = "unsicher",font=("Lucida Handwriting Italic",8),bg="#ff1212",bd=7,relief=tk.SOLID,borderwidth=3)
+                safetylabel.grid(row=5,column=3,sticky='wens',pady=5)
+            elif ussinteger <2:
+                safetylabel=tk.Label(win,text = "sicher",font=("Lucida Handwriting Italic",8),bg="#51ff12",bd=7,relief=tk.SOLID,borderwidth=3)
+                safetylabel.grid(row=5,column=3,sticky='wens',pady=5) 
+
+
+    elif volt == 220:
+            l220=calc.get()
+            length220=int(l220)
+            #math
+            if length220 == 0:
+                eaus=list220[0] 
+            elif length220 in range(0,6):
+                eaus=list220[1] 
+            elif length220 in range(5,11):
+                eaus=list220[2] 
+            elif length220 in range(10,16):
+                eaus=list220[3] 
+            elif length220 in range(15,21):
+                eaus=list220[4] 
+            elif length220 in range(20,26):
+                eaus=list220[5] 
+            elif length220 in range(25,31):
+                eaus=list220[6] 
+            else:
+                eaus=0 
+            tk.Label(text=f"Feldstärke - {eaus} KV/m",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=3,column=3,sticky='wens',pady=5)
+            uss=(0.42*eaus)
+            ussinteger=float(uss)
+            tk.Label(text=f"spannung - {ussinteger} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=3,sticky='wens',pady=5)
+            if ussinteger >=2:
+                safetylabel=tk.Label(win,text = "unsicher",font=("Lucida Handwriting Italic",8),bg="#ff1212",bd=7,relief=tk.SOLID,borderwidth=3)
+                safetylabel.grid(row=5,column=3,sticky='wens',pady=5)
+            elif ussinteger <2:
+                safetylabel=tk.Label(win,text = "sicher",font=("Lucida Handwriting Italic",8),bg="#51ff12",bd=7,relief=tk.SOLID,borderwidth=3)
+                safetylabel.grid(row=5,column=3,sticky="wens",pady=5)
+    
+    
+    elif volt==110:
+            l110=calc.get()
+            length110=int(l110)
+            #math
+            if length110 == 0:
+                eaus=list110[0] 
+            elif length110 in range(0,6):
+                eaus=list110[1] 
+            elif length110 in range(5,11):
+                eaus=list110[2] 
+            elif length110 in range(10,16):
+                eaus=list110[3] 
+            elif length110 in range(15,21):
+                eaus=list110[4]
+            elif length110 in range(20,26):
+                eaus=list110[5] 
+            elif length110 in range(25,31):
+                eaus=list110[6] 
+            else:
+                eaus=0
+            tk.Label(text=f"Feldstärke - {eaus} KV/m",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=3,column=3,sticky='wens',pady=5)
+            uss=(0.42*eaus)
+            ussinteger=float(uss)
+            tk.Label(text=f"spannung - {ussinteger} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=3,sticky='wens',pady=5)
+            if ussinteger >=2:
+                safetylabel=tk.Label(win,text = "unsicher",font=("Lucida Handwriting Italic",8),bg="#ff1212",bd=7,relief=tk.SOLID,borderwidth=3)
+                safetylabel.grid(row=5,column=3,sticky='wens',pady=5)
+            elif ussinteger <2:
+                safetylabel=tk.Label(win,text = "sicher",font=("Lucida Handwriting Italic",8),bg="#51ff12",bd=7,relief=tk.SOLID,borderwidth=3)
+                safetylabel.grid(row=5,column=3,sticky='wens',pady=5)
+            
+def clear():
+    calc.delete(0,tk.END) 
+    calc.insert(0,0)
+
+def make_choise_button(voltage):
+    return tk.Button(text="mode:"+voltage+"V",bd=2,bg="#ffd359",font=("Arial",13),command=lambda:choosevoltage(voltage))
+    
+def choosevoltage(voltage):
+    global startchoice
+    startchoice=voltage
+    color="blue"
+    label=tk.Label(win,text = "activated mode: "+ voltage + " V",font=("Lucida Handwriting Italic",8),bg="#ffd359",bd=7,relief=tk.SOLID,borderwidth=3)
+    label.grid(row=2,column=3,sticky="wens",pady=5)
+
+#gui setup
+win=tk.Tk()
+win.geometry(f"540x350+100+200") 
+win["bg"]="#3a3a3a"
+win.title("Rechner")
+
+#entry field
+calc=tk.Entry(win,justify=tk.RIGHT,font=("Arial",15),width=15) 
+calc.insert(0,'0')
+calc.grid(row=0,column=0,columnspan=3,stick="we",padx=5)
+
+#buttons
+insturction1=tk.Label(win,text = "<-Aktuelle Entfernung von der Quelle",bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3)
+insturction1.grid(row=0,column=3,stick="wens",pady=0,padx=0)
+
+make_import_button().grid(row=5,column=2,stick="wens",pady=5,padx=5)
+make_choise_button("500").grid(row=1,column=0,pady=5,padx=5)
+make_choise_button("380").grid(row=1,column=1,pady=5,padx=5)
+make_choise_button("220").grid(row=1,column=2,pady=5,padx=5)
+make_choise_button("110").grid(row=1,stick='we',column=3,pady=5,padx=5)
+make_digit_button("1").grid(row=2,column=0,stick="wens",pady=5,padx=5)
+make_digit_button("2").grid(row=2,column=1,stick="wens",pady=5,padx=5)
+make_digit_button("3").grid(row=2,column=2,stick="wens",pady=5,padx=5)
+make_digit_button("4").grid(row=3,column=0,stick="wens",pady=5,padx=5)
+make_digit_button("5").grid(row=3,column=1,stick="wens",pady=5,padx=5)
+make_digit_button("6").grid(row=3,column=2,stick="wens",pady=5,padx=5)
+make_digit_button("7").grid(row=4,column=0,stick="wens",pady=5,padx=5)
+make_digit_button("8").grid(row=4,column=1,stick="wens",pady=5,padx=5)
+make_digit_button("9").grid(row=4,column=2,stick="wens",pady=5,padx=5)
+make_digit_button("0").grid(row=5,column=0,stick="wens",pady=5,padx=5)
+make_clear_button("C").grid(row=5,column=1,stick="wens",pady=5,padx=5)
+#size
+win.grid_columnconfigure(0,minsize=60)
+win.grid_columnconfigure(1,minsize=60)
+win.grid_columnconfigure(2,minsize=60)
+win.grid_columnconfigure(3,minsize=60)
+
+win.grid_rowconfigure(1,minsize=60)
+win.grid_rowconfigure(2,minsize=60)
+win.grid_rowconfigure(3,minsize=60)
+win.grid_rowconfigure(4,minsize=60)
+
+#loop
+win.mainloop()
