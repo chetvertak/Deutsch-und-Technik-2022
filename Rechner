@@ -11,6 +11,12 @@ list380= [7,6,5,4,3,2.5,2]
 list220=[3.5, 3, 2.5, 2, 1.5, 1, 0.5]
 list110=[1.8, 1.4, 1, 0.75, 0.5, 0.375]
 
+list500m=[18,19,20,15,10,7,5]
+list380m=[13,14,14.5,10,7.5,6,4]
+list220m=[7,8,6.5,5,3.5,2.5,1]
+list110m=[5,2.5,2,1,0.5]
+
+
 normal1=2
 global uss
 
@@ -40,25 +46,37 @@ def importinfo(gg):
         length500=int(l500)
         #math
         if length500 == 0:
-            eaus=list500[0] 
+            eaus=list500[0]
+            Induktion=list500m[0]
+            print(Induktion)
         elif length500 in range(0,6):
-            eaus=list500[1] 
+            eaus=list500[1]
+            Induktion=list500m[1] 
         elif length500 in range(5,11):
-            eaus=list500[2] 
+            eaus=list500[2]
+            Induktion=list500m[2] 
         elif length500 in range(10,16):
-            eaus=list500[3] 
+            eaus=list500[3]
+            Induktion=list500m[3]
         elif length500 in range(15,21):
-            eaus=list500[4] 
+            eaus=list500[4]
+            Induktion=list500m[4] 
         elif length500 in range(20,26):
             eaus=list500[5] 
+            Induktion=list500m[5]
         elif length500 in range(25,31):
             eaus=list500[6] 
+            Induktion=list500m[6]
         else:
-            eaus=0 
-        tk.Label(text=f"Feldstärke - {eaus} KV/m",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=3,column=3,sticky='wens',pady=5)
+            eaus=0
+            Induktion=0 
+        tk.Label(text=f"Feldstärke - {eaus} KV/m",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=3,column=3,sticky='wens',pady=5,padx=5)
+        tk.Label(text=f"Induktion - {Induktion} KV/m",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=3,column=4,sticky='wens',pady=5,padx=5)
         uss=(0.42*eaus)
         ussinteger=float(uss)
-        tk.Label(text=f"spannung - {ussinteger} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=3,sticky='wens',pady=5)
+        maxFläche=(Induktion*0.02)
+        tk.Label(text=f"spannung - {ussinteger} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=3,sticky='wens',pady=5,padx=5)
+        tk.Label(text=f"spannung2 - {maxFläche} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=4,sticky='wens',pady=5,padx=5)
         if ussinteger >=2:
             safetylabel=tk.Label(win,text = "unsicher",font=("Lucida Handwriting Italic",8),bg="#ff1212",bd=7,relief=tk.SOLID,borderwidth=3)
             safetylabel.grid(row=5,column=3,sticky='wens',pady=5)
@@ -71,26 +89,36 @@ def importinfo(gg):
             length380=int(l380)
             #math
             if length380 == 0:
-                eaus=list380[0] 
+                eaus=list380[0]
+                Induktion=list380m[0] 
             elif length380 in range(0,6):
-                eaus=list380[1] 
+                eaus=list380[1]
+                Induktion=list380m[1] 
             elif length380 in range(5,11):
-                eaus=list380[2] 
+                eaus=list380[2]
+                Induktion=list380m[2] 
             elif length380 in range(10,16):
-                eaus=list380[3]        
+                eaus=list380[3]
+                Induktion=list380m[3]        
             elif length380 in range(15,21):
-                eaus=list380[4]      
+                eaus=list380[4]
+                Induktion=list380m[4]      
             elif length380 in range(20,26):
-                eaus=list380[5] 
+                eaus=list380[5]
+                Induktion=list380m[5] 
             elif length380 in range(25,31):
-                eaus=list380[6] 
-
+                eaus=list380[6]
+                Induktion=list380m[6] 
             else:
                 eaus=0
+                Induktion=0
             tk.Label(text=f"Feldstärke - {eaus} KV/m",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=3,column=3,sticky='wens',pady=5)
+            tk.Label(text=f"Induktion - {Induktion} KV/m",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=3,column=4,sticky='wens',pady=5,padx=5)
             uss=(0.42*eaus)
+            maxFläche=(Induktion*0.02)
             ussinteger=float(uss)
             tk.Label(text=f"spannung - {ussinteger} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=3,sticky='wens',pady=5)
+            tk.Label(text=f"spannung2 - {maxFläche} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=4,sticky='wens',pady=5,padx=5)
             if ussinteger >=2:
                 safetylabel=tk.Label(win,text = "unsicher",font=("Lucida Handwriting Italic",8),bg="#ff1212",bd=7,relief=tk.SOLID,borderwidth=3)
                 safetylabel.grid(row=5,column=3,sticky='wens',pady=5)
@@ -104,25 +132,37 @@ def importinfo(gg):
             length220=int(l220)
             #math
             if length220 == 0:
-                eaus=list220[0] 
+                eaus=list220[0]
+                Induktion=list220m[0] 
             elif length220 in range(0,6):
-                eaus=list220[1] 
+                eaus=list220[1]
+                Induktion=list220m[1]  
             elif length220 in range(5,11):
                 eaus=list220[2] 
+                Induktion=list220m[2] 
             elif length220 in range(10,16):
                 eaus=list220[3] 
+                Induktion=list220m[3] 
             elif length220 in range(15,21):
-                eaus=list220[4] 
+                eaus=list220[4]
+                Induktion=list220m[4]  
             elif length220 in range(20,26):
-                eaus=list220[5] 
+                eaus=list220[5]
+                Induktion=list220m[5]  
             elif length220 in range(25,31):
-                eaus=list220[6] 
+                eaus=list220[6]
+                Induktion=list220m[6]  
             else:
                 eaus=0 
+                Induktion=0
             tk.Label(text=f"Feldstärke - {eaus} KV/m",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=3,column=3,sticky='wens',pady=5)
+            tk.Label(text=f"Induktion - {Induktion} KV/m",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=3,column=4,sticky='wens',pady=5,padx=5)
             uss=(0.42*eaus)
             ussinteger=float(uss)
+            maxFläche=(Induktion*0.02) 
             tk.Label(text=f"spannung - {ussinteger} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=3,sticky='wens',pady=5)
+            tk.Label(text=f"spannung2 - {maxFläche} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=4,sticky='wens',pady=5)
+            
             if ussinteger >=2:
                 safetylabel=tk.Label(win,text = "unsicher",font=("Lucida Handwriting Italic",8),bg="#ff1212",bd=7,relief=tk.SOLID,borderwidth=3)
                 safetylabel.grid(row=5,column=3,sticky='wens',pady=5)
@@ -136,25 +176,36 @@ def importinfo(gg):
             length110=int(l110)
             #math
             if length110 == 0:
-                eaus=list110[0] 
+                eaus=list110[0]
+                Induktion=list110m[0] 
             elif length110 in range(0,6):
-                eaus=list110[1] 
+                eaus=list110[1]
+                Induktion=list110m[1]  
             elif length110 in range(5,11):
-                eaus=list110[2] 
+                eaus=list110[2]
+                Induktion=list110m[2]  
             elif length110 in range(10,16):
-                eaus=list110[3] 
+                eaus=list110[3]
+                Induktion=list110m[3]  
             elif length110 in range(15,21):
                 eaus=list110[4]
+                Induktion=list110m[4] 
             elif length110 in range(20,26):
-                eaus=list110[5] 
+                eaus=list110[5]
+                Induktion=list110m[5]  
             elif length110 in range(25,31):
-                eaus=list110[6] 
+                eaus=list110[6]
+                Induktion=0  
             else:
                 eaus=0
+                Induktion=0
             tk.Label(text=f"Feldstärke - {eaus} KV/m",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=3,column=3,sticky='wens',pady=5)
+            tk.Label(text=f"Induktion - {Induktion} KV/m",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=3,column=4,sticky='wens',pady=5,padx=5)
             uss=(0.42*eaus)
             ussinteger=float(uss)
+            maxFläche=(Induktion*0.02)
             tk.Label(text=f"spannung - {ussinteger} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=3,sticky='wens',pady=5)
+            tk.Label(text=f"spannung2 - {maxFläche} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=4,sticky='wens',pady=5)
             if ussinteger >=2:
                 safetylabel=tk.Label(win,text = "unsicher",font=("Lucida Handwriting Italic",8),bg="#ff1212",bd=7,relief=tk.SOLID,borderwidth=3)
                 safetylabel.grid(row=5,column=3,sticky='wens',pady=5)
@@ -172,13 +223,12 @@ def make_choise_button(voltage):
 def choosevoltage(voltage):
     global startchoice
     startchoice=voltage
-    color="blue"
     label=tk.Label(win,text = "activated mode: "+ voltage + " V",font=("Lucida Handwriting Italic",8),bg="#ffd359",bd=7,relief=tk.SOLID,borderwidth=3)
     label.grid(row=2,column=3,sticky="wens",pady=5)
 
 #gui setup
 win=tk.Tk()
-win.geometry(f"540x350+100+200") 
+win.geometry(f"680x350+100+200") 
 win["bg"]="#3a3a3a"
 win.title("Rechner")
 
