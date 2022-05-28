@@ -1,8 +1,3 @@
-#Language - Python
-#The software were made by Chetvertak(May 2022)
-#The software is used to find out if the distance is safe, according to world standart(if voltage inside the pacemaker <= 2mV: it is safe)
-
-
 import tkinter as tk
 
 #list of info
@@ -48,7 +43,6 @@ def importinfo(gg):
         if length500 == 0:
             eaus=list500[0]
             Induktion=list500m[0]
-            print(Induktion)
         elif length500 in range(0,6):
             eaus=list500[1]
             Induktion=list500m[1] 
@@ -70,17 +64,19 @@ def importinfo(gg):
         else:
             eaus=0
             Induktion=0 
-        tk.Label(text=f"Feldstärke - {eaus} KV/m",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=3,column=3,sticky='wens',pady=5,padx=5)
+        tk.Label(text=f"Feldstärke - {eaus} KV/m",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=3,column=3,sticky='wens',pady=5)
         tk.Label(text=f"Induktion - {Induktion} KV/m",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=3,column=4,sticky='wens',pady=5,padx=5)
         uss=(0.42*eaus)
-        ussinteger=float(uss)
         maxFläche=(Induktion*0.02)
-        tk.Label(text=f"spannung - {ussinteger} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=3,sticky='wens',pady=5,padx=5)
+        ussinteger=float(uss)
+        checker=ussinteger+maxFläche
+        print(checker)
+        tk.Label(text=f"spannung - {ussinteger} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=3,sticky='wens',pady=5)
         tk.Label(text=f"spannung2 - {maxFläche} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=4,sticky='wens',pady=5,padx=5)
-        if ussinteger >=2:
+        if checker >=2:
             safetylabel=tk.Label(win,text = "unsicher",font=("Lucida Handwriting Italic",8),bg="#ff1212",bd=7,relief=tk.SOLID,borderwidth=3)
             safetylabel.grid(row=5,column=3,sticky='wens',pady=5)
-        elif ussinteger <2:
+        elif checker <2:
             safetylabel=tk.Label(win,text = "sicher",font=("Lucida Handwriting Italic",8),bg="#51ff12",bd=7,relief=tk.SOLID,borderwidth=3)
             safetylabel.grid(row=5,column=3,sticky='wens',pady=5)
             
@@ -117,12 +113,14 @@ def importinfo(gg):
             uss=(0.42*eaus)
             maxFläche=(Induktion*0.02)
             ussinteger=float(uss)
+            checker=ussinteger+maxFläche
+            print(checker)
             tk.Label(text=f"spannung - {ussinteger} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=3,sticky='wens',pady=5)
             tk.Label(text=f"spannung2 - {maxFläche} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=4,sticky='wens',pady=5,padx=5)
-            if ussinteger >=2:
+            if checker >=2:
                 safetylabel=tk.Label(win,text = "unsicher",font=("Lucida Handwriting Italic",8),bg="#ff1212",bd=7,relief=tk.SOLID,borderwidth=3)
                 safetylabel.grid(row=5,column=3,sticky='wens',pady=5)
-            elif ussinteger <2:
+            elif checker <2:
                 safetylabel=tk.Label(win,text = "sicher",font=("Lucida Handwriting Italic",8),bg="#51ff12",bd=7,relief=tk.SOLID,borderwidth=3)
                 safetylabel.grid(row=5,column=3,sticky='wens',pady=5) 
 
@@ -160,13 +158,15 @@ def importinfo(gg):
             uss=(0.42*eaus)
             ussinteger=float(uss)
             maxFläche=(Induktion*0.02) 
+            checker=ussinteger+maxFläche
+            print(checker)
             tk.Label(text=f"spannung - {ussinteger} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=3,sticky='wens',pady=5)
-            tk.Label(text=f"spannung2 - {maxFläche} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=4,sticky='wens',pady=5)
+            tk.Label(text=f"spannung2 - {maxFläche} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=4,sticky='wens',pady=5,padx=5)
             
-            if ussinteger >=2:
+            if checker >=2:
                 safetylabel=tk.Label(win,text = "unsicher",font=("Lucida Handwriting Italic",8),bg="#ff1212",bd=7,relief=tk.SOLID,borderwidth=3)
                 safetylabel.grid(row=5,column=3,sticky='wens',pady=5)
-            elif ussinteger <2:
+            elif checker <2:
                 safetylabel=tk.Label(win,text = "sicher",font=("Lucida Handwriting Italic",8),bg="#51ff12",bd=7,relief=tk.SOLID,borderwidth=3)
                 safetylabel.grid(row=5,column=3,sticky="wens",pady=5)
     
@@ -204,12 +204,14 @@ def importinfo(gg):
             uss=(0.42*eaus)
             ussinteger=float(uss)
             maxFläche=(Induktion*0.02)
+            checker=ussinteger+maxFläche
+            print(checker)
             tk.Label(text=f"spannung - {ussinteger} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=3,sticky='wens',pady=5)
-            tk.Label(text=f"spannung2 - {maxFläche} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=4,sticky='wens',pady=5)
-            if ussinteger >=2:
+            tk.Label(text=f"spannung2 - {maxFläche} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=4,sticky='wens',pady=5,padx=5)
+            if checker >=2:
                 safetylabel=tk.Label(win,text = "unsicher",font=("Lucida Handwriting Italic",8),bg="#ff1212",bd=7,relief=tk.SOLID,borderwidth=3)
                 safetylabel.grid(row=5,column=3,sticky='wens',pady=5)
-            elif ussinteger <2:
+            elif checker <2:
                 safetylabel=tk.Label(win,text = "sicher",font=("Lucida Handwriting Italic",8),bg="#51ff12",bd=7,relief=tk.SOLID,borderwidth=3)
                 safetylabel.grid(row=5,column=3,sticky='wens',pady=5)
             
