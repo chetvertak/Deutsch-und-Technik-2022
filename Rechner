@@ -69,8 +69,7 @@ def importinfo(gg):
         uss=(0.42*eaus)
         maxFläche=(Induktion*0.02)
         ussinteger=float(uss)
-        checker=ussinteger+maxFläche
-        print(checker)
+        checker=ussinteger+maxFläche        
         tk.Label(text=f"spannung - {ussinteger} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=3,sticky='wens',pady=5)
         tk.Label(text=f"spannung2 - {maxFläche} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=4,sticky='wens',pady=5,padx=5)
         if checker >=2:
@@ -114,7 +113,6 @@ def importinfo(gg):
             maxFläche=(Induktion*0.02)
             ussinteger=float(uss)
             checker=ussinteger+maxFläche
-            print(checker)
             tk.Label(text=f"spannung - {ussinteger} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=3,sticky='wens',pady=5)
             tk.Label(text=f"spannung2 - {maxFläche} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=4,sticky='wens',pady=5,padx=5)
             if checker >=2:
@@ -159,7 +157,6 @@ def importinfo(gg):
             ussinteger=float(uss)
             maxFläche=(Induktion*0.02) 
             checker=ussinteger+maxFläche
-            print(checker)
             tk.Label(text=f"spannung - {ussinteger} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=3,sticky='wens',pady=5)
             tk.Label(text=f"spannung2 - {maxFläche} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=4,sticky='wens',pady=5,padx=5)
             
@@ -205,7 +202,6 @@ def importinfo(gg):
             ussinteger=float(uss)
             maxFläche=(Induktion*0.02)
             checker=ussinteger+maxFläche
-            print(checker)
             tk.Label(text=f"spannung - {ussinteger} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=3,sticky='wens',pady=5)
             tk.Label(text=f"spannung2 - {maxFläche} mV",font=("Lucida Handwriting Italic",8),bg="#0366fc",bd=7,relief=tk.SOLID,borderwidth=3).grid(row=4,column=4,sticky='wens',pady=5,padx=5)
             if checker >=2:
