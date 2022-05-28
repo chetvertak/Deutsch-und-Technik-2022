@@ -1,3 +1,7 @@
+#Language - Python
+#The software were made by Chetvertak(May 2022)
+#The software is used to find out if the distance is safe, according to world standart(if voltage inside the pacemaker <= 2mV: it is safe)
+
 import tkinter as tk
 
 #list of info
@@ -10,7 +14,6 @@ list500m=[18,19,20,15,10,7,5]
 list380m=[13,14,14.5,10,7.5,6,4]
 list220m=[7,8,6.5,5,3.5,2.5,1]
 list110m=[5,2.5,2,1,0.5]
-
 
 normal1=2
 global uss
@@ -25,7 +28,6 @@ def add_digit(digit):
 
 def make_digit_button(digit):
     return tk.Button(text=digit,bd=5,font=("Arial",13),command=lambda : add_digit(digit))
-
 
 def make_clear_button(operation):
     return tk.Button(text=operation,bd=5,font=("Arial",13),fg='red',
@@ -124,7 +126,6 @@ def importinfo(gg):
                 safetylabel=tk.Label(win,text = "sicher",font=("Lucida Handwriting Italic",8),bg="#51ff12",bd=7,relief=tk.SOLID,borderwidth=3)
                 safetylabel.grid(row=5,column=3,sticky='wens',pady=5) 
 
-
     elif volt == 220:
             l220=calc.get()
             length220=int(l220)
@@ -169,7 +170,6 @@ def importinfo(gg):
             elif checker <2:
                 safetylabel=tk.Label(win,text = "sicher",font=("Lucida Handwriting Italic",8),bg="#51ff12",bd=7,relief=tk.SOLID,borderwidth=3)
                 safetylabel.grid(row=5,column=3,sticky="wens",pady=5)
-    
     
     elif volt==110:
             l110=calc.get()
